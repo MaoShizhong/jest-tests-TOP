@@ -52,4 +52,20 @@ describe('Mathematical operations on numbers (including floats)', () => {
             (a, b, result) => expect(multiply(a, b)).toBe(result)
         );
     });
+
+    describe('Divide two numbers (rounded to max. 5 d.p.)', () => {
+        const nums = [
+            [2, 1, 2],
+            [-6, 3, -2],
+            [2.3, 1.1, 2.09091],
+            [45.01, -23.0001, -1.95695],
+            [5.3, 0.1, 53],
+            [511, 512.1, 0.99785],
+        ];
+
+        test.each(nums)(
+            '%d / %d returns %d',
+            (a, b, result) => expect(divide(a, b)).toBe(result)
+        );
+    });
 });
