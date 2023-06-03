@@ -35,4 +35,21 @@ describe('Mathematical operations on numbers (including floats)', () => {
             (a, b, result) => expect(subtract(a, b)).toBe(result)
         );
     });
+
+    describe('Multiply two numbers', () => {
+        const nums = [
+            [2, 1, 2],
+            [34, 76, 2584],
+            [-5, -7, 35],
+            [0.1, 0.2, 0.02],
+            [0.5, -0.61, -0.305],
+            [2.3, 1.1, 2.53],
+            [257.78, 100, 25778],
+        ];
+
+        test.each(nums)(
+            '%d * %d returns %d',
+            (a, b, result) => expect(multiply(a, b)).toBe(result)
+        );
+    });
 });
