@@ -1,21 +1,13 @@
-const toCaesar = (char, shift) => {
-    const shiftedCharCode = char.charCodeAt(0) + shift;
-    let newCode;
-    if (/[a-z]/.test(char)) {
-        newCode = shiftedCharCode > 122 ? shiftedCharCode - 26 : shiftedCharCode;
-    }
-    else {
-        newCode = shiftedCharCode > 90 ? shiftedCharCode - 26 : shiftedCharCode;
-    }
+export const encryptCaesar = (str, key) => {
+    const trueKey = key < 0 ? (key % 26) + 26 : key % 26;
 
-    return String.fromCharCode(newCode);
-};
-
-export const caesar = (str, key) => {
-    const shiftAmount = key > 0 ? key % 26 : (key % 26) + 26;
     let encryptedStr = '';
+
     for (const char of str) {
-        encryptedStr += /[a-zA-Z]/.test(char) ? toCaesar(char, shiftAmount) : char;
+        const caseOffset = /[A-Z]/.test(char) ? 65 : 97;
+        encryptedStr += /[A-Za-z]/.test(char)
+            ? String.fromCharCode((char.charCodeAt(0) - caseOffset + trueKey) % 26 + caseOffset)
+            : char;
     }
     return encryptedStr;
 };

@@ -1,4 +1,4 @@
-import { caesar } from './caesar.js';
+import { encryptCaesar } from './caesar.js';
 
 describe('Encode case-sensitive string via Caesar cipher using given key (ignores non-alphabet characters)', () => {
     const strings = [
@@ -14,6 +14,6 @@ describe('Encode case-sensitive string via Caesar cipher using given key (ignore
 
     test.each(strings)(
         'Encrypts %j as %j using a key of %d',
-        (plaintext, ciphertext, key) => expect(caesar(plaintext, key)).toBe(ciphertext)
+        (plaintext, ciphertext, key) => expect(encryptCaesar(plaintext, key)).toBe(ciphertext)
     );
 });
